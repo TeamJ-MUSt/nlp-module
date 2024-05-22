@@ -15,6 +15,8 @@ def get_best_definition_index(sentence, word_data):
         text = text.replace('.','').strip()
         return text
     definitions = [filter(text) for text in definitions]
+    if word not in sentence:
+        return 0
     replaced_sentences = [sentence.replace(word, definition) for definition in definitions]
     
     sentence_embedding = ai.get_embedding(sentence)
